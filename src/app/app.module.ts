@@ -19,7 +19,7 @@ import { VwapTriggeredAlertsComponent } from './vwap-triggered-alerts/vwap-trigg
 import { VwapTriggeredAlertsTableComponent } from './vwap-triggered-alerts/vwap-triggered-alerts-table/vwap-triggered-alerts-table.component';
 import { AlertMenuComponent } from './nav-bar/alert-menu/alert-menu.component';
 
-import { WorkItemComponent } from './work-item/work-item.component';
+import { WorkItemComponent } from './coins/work-item/work-item.component';
 import { CoinsComponent } from './coins/coins.component';
 import { CoinsFieldComponent } from './coins/coins-field/coins-field.component';
 

@@ -11,7 +11,7 @@ import { AlertsCollection } from 'models/alerts/alerts-collections';
 @Component({
   selector: 'app-coins',
   templateUrl: './coins.component.html',
-  styleUrls: ['./coins.component.css', './../../styles-alerts.css'],
+  styleUrls: ['./coins.component.css'],
 })
 export class CoinsComponent implements OnInit, OnDestroy {
   counter = 0;
@@ -61,6 +61,7 @@ export class CoinsComponent implements OnInit, OnDestroy {
         .subscribe((data: Alert[]) => {
           console.log('Triggered Alerts data', data);
           this.alerts = data;
+          this.selectionService.clear();
         })
     );
     this.isRotating = true;
@@ -68,7 +69,7 @@ export class CoinsComponent implements OnInit, OnDestroy {
       this.isRotating = false;
     }, 1000);
   }
-  // Selection Methods
+
   toggleAll(): void {
     this.selectionService.isAllSelected(this.alerts)
       ? this.selectionService.clear()

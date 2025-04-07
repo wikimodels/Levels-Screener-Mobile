@@ -62,6 +62,9 @@ export class AlertsGenericService {
         // 🔹 Clear the local store before updating with new alerts
         this.setAlerts(collectionName, []);
         this.setAlerts(collectionName, alerts);
+        console.log('getAllAlerts --> ', collectionName, alerts);
+        const msg = `Ok`;
+        this.snackbarService.showSnackBar(msg, '');
       }),
       catchError((error) => {
         console.error('Error fetching alerts:', error);
