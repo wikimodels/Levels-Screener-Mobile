@@ -70,6 +70,7 @@ export class VwapAlertsGenericService {
         tap((sortedAlerts) => {
           this.setAlerts(collectionName, []);
           this.setAlerts(collectionName, sortedAlerts);
+          this.snackbarService.showSnackBar('Ok', '');
           console.log(
             `Brought from server --> CollectionName: ${collectionName}`,
             sortedAlerts

@@ -3,7 +3,9 @@ import { Router } from '@angular/router';
 import {
   TRIGGERED_LINE_ALERTS,
   TRIGGERED_VWAP_ALERTS,
+  VIBRATIONS,
 } from 'src/consts/url-consts';
+import { runVibration } from 'src/functions/run-vibration';
 
 @Component({
   selector: 'app-alert-menu',
@@ -22,9 +24,6 @@ export class AlertMenuComponent implements OnInit {
   goToVwapTriggeredAlerts() {
     this.router.navigate([TRIGGERED_VWAP_ALERTS]);
   }
-  goToCoins() {
-    this.router.navigate(['coins']);
-  }
 
   selectedAlert = 'Triggered Line Alerts'; // Default text [[1]][[4]]
 
@@ -33,11 +32,11 @@ export class AlertMenuComponent implements OnInit {
     this.selectedAlert = alertType;
     // Add navigation logic based on alertType [[3]][[10]]
     if (alertType === 'Triggered Vwap Alerts') {
-      this.goToVwapTriggeredAlerts(); // Call existing method [[3]]
+      this.goToVwapTriggeredAlerts();
+      runVibration(VIBRATIONS.routine);
     } else if (alertType === 'Triggered Line Alerts') {
-      this.goToTriggeredLineAlerts(); // Call existing method [[3]]
-    } else if (alertType === 'Coins') {
-      this.goToCoins(); // Call existing method [[3]]
+      this.goToTriggeredLineAlerts();
+      runVibration(VIBRATIONS.routine);
     }
   }
 }

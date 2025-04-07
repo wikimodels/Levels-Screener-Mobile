@@ -1,5 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { VwapAlert } from 'models/vwap/vwap-alert';
+import { VIBRATIONS } from 'src/consts/url-consts';
+import { runVibration } from 'src/functions/run-vibration';
 import { SelectionService } from 'src/service/selection.service';
 
 @Component({
@@ -20,5 +22,6 @@ export class TriggeredVwapAlertItemComponent {
 
   toggleItem(item: VwapAlert): void {
     this.selectionService.toggle(item);
+    runVibration(VIBRATIONS.routine);
   }
 }

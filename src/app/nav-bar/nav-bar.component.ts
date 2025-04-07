@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { VIBRATIONS } from 'src/consts/url-consts';
+import { runVibration } from 'src/functions/run-vibration';
 
 import { SelectionService } from 'src/service/selection.service';
 
@@ -10,6 +12,7 @@ import { SelectionService } from 'src/service/selection.service';
 export class NavBarComponent {
   constructor(public selectionService: SelectionService<any>) {}
   onGoToBitcoin() {
+    runVibration(VIBRATIONS.routine);
     window.open(
       `https://www.tradingview.com/chart?symbol=BYBIT:${'BTCUSDT'}.P`,
       '_blank'

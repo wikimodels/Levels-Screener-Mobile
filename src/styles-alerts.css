@@ -1,13 +1,13 @@
-
+/* General Styles */
 .round-image {
-  width: 20px; /* Set your desired width */
-  height: 20px; /* Set your desired height */
-  border-radius: 50%; /* This makes the image round */
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
   object-fit: cover;
   margin-right: 4px;
 }
 
-.field{
+.field {
   width: 100%;
   margin-top: 115px;
   padding-bottom: 40px;
@@ -17,43 +17,9 @@
   justify-content: space-around;
 }
 
-
-/* Cleaned CSS with only used classes */
-.controls-container {
-  min-width: 100%;
-  align-items: center;
-  margin-bottom: 40px;
-  position: fixed;
-  top: 60px;
-  width: 100%;
-  background: white;
-  z-index: 1000;
-  display: flex;
-  flex-direction: row;
-  justify-content: center; /* Centered container [[1]] */
-  padding-top:  0px;
-
-}
-
-.button-group {
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
-  justify-content: center; /* Center buttons within group [[1]] */
-}
-
-.round-image {
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-right: 4px;
-}
-
 .symbol-cell {
   display: flex;
   align-items: center;
-
 }
 
 .button-icon-margin {
@@ -69,7 +35,6 @@
   margin-top: 110px;
 }
 
-
 .rotate {
   animation: rotate 0.6s linear forwards;
 }
@@ -81,4 +46,76 @@
   to {
     transform: rotate(0deg);
   }
+}
+
+/* Card Container Styles */
+.card-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 10px;
+  padding: 15px;
+  gap: 4px;
+  width: calc(fit-content + 8px);
+  margin: 4px;
+  cursor: pointer;
+}
+
+.card-container .logo img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  border-radius: 50%;
+}
+
+.symbol-name {
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+  margin-right: 4px;
+  white-space: nowrap;
+  padding-top: 2px;
+}
+
+.exchange-link img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  border-radius: 50%;
+}
+
+.selected {
+  background-color: #e8ebee;
+}
+
+.activation-time {
+  font-weight: 500;
+}
+
+.alert-action {
+  font-style: italic;
+  font-weight: 500;
+}
+
+/* Controls Container Styles */
+.controls-container {
+  min-width: 100%;
+  align-items: center;
+  margin-bottom: 40px;
+  position: fixed;
+  top: 60px;
+  width: 100%;
+  background: white;
+  z-index: 1000;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding-top: 0px;
+}
+
+.button-group {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: center;
 }

@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { CoinsComponent } from './coins/coins.component';
 import {
   TRIGGERED_LINE_ALERTS,
   TRIGGERED_VWAP_ALERTS,
@@ -20,10 +19,7 @@ const routes: Routes = [
     path: TRIGGERED_VWAP_ALERTS,
     component: TriggeredVwapAlertsComponent,
   },
-  {
-    path: 'coins',
-    component: CoinsComponent,
-  },
+
   { path: '**', redirectTo: '' }, // Your existing routes
 ];
 

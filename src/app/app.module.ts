@@ -14,9 +14,6 @@ import { SnackbarComponent } from './shared/snackbar/snackbar.component';
 
 import { AlertMenuComponent } from './nav-bar/alert-menu/alert-menu.component';
 
-import { WorkItemComponent } from './coins/work-item/work-item.component';
-import { CoinsComponent } from './coins/coins.component';
-import { CoinsFieldComponent } from './coins/coins-field/coins-field.component';
 import { TriggeredLineAlertsComponent } from './triggered-line-alerts/triggered-line-alerts.component';
 import { TriggeredLineAlertsFieldComponent } from './triggered-line-alerts/triggered-line-alerts-field/triggered-line-alerts-field.component';
 import { TriggeredLineAlertItemComponent } from './triggered-line-alerts/triggered-line-alert-item/triggered-line-alert-item.component';
@@ -30,9 +27,6 @@ import { TriggeredVwapAlertsComponent } from './triggered-vwap-alerts/triggered-
     AlertMenuComponent,
     NavBarComponent,
     SnackbarComponent,
-    WorkItemComponent,
-    CoinsComponent,
-    CoinsFieldComponent,
     TriggeredLineAlertsComponent,
     TriggeredLineAlertsFieldComponent,
     TriggeredLineAlertItemComponent,
