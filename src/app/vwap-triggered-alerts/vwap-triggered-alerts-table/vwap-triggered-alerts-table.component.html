@@ -1,0 +1,25 @@
+<!-- Cards container with flex layout -->
+<div class="cards-container">
+  <mat-card *ngFor="let element of dataSource" class="alert-card mat-elevation-z4">
+    <!-- Upper section for symbol -->
+    <div class="card-header">
+      <img [src]="element.imageUrl || 'assets/img/noname.png'" class="round-image card-icon" alt="logo">
+      <div class="card-title">
+        {{element.symbol}} ({{element.category}})
+      </div>
+    </div>
+
+    <!-- Lower section for activation time -->
+    <div class="card-content">
+      <div class="activation-time">
+        <i>{{element.activationTimeStr}}</i>
+      </div>
+
+    </div>
+  </mat-card>
+</div>
+
+<!-- Paginator remains the same -->
+<div class="paginator-container">
+  <mat-paginator [pageSizeOptions]="[10, 20, 30, 100]" showFirstLastButtons></mat-paginator>
+</div>

@@ -1,0 +1,20 @@
+/* ------------------------*/
+/* TRIGGERED ALERTS TABLE  */
+/*-------------------------*/
+.triggered-alerts-table .mat-mdc-row:nth-child(even) {
+  background-color: #fff0e6 !important; /* Pale peach */
+}
+
+.triggered-alerts-table .mat-mdc-row {
+  height: 30px !important;
+}
+
+.triggered-alerts-table .mat-mdc-header-row {
+  /* background-color: #f0ad4e !important;   */
+  height: 40px;
+}
+
+.triggered-alerts-table .mat-mdc-row:hover {
+  background-color: #e9ecef !important; /* Light gray */
+  cursor: pointer; /* Optional: Add pointer cursor on hover */
+}

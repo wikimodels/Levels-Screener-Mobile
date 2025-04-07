@@ -1,0 +1,66 @@
+/* ------------------------------- */
+/* ARCHIVED VWAP ALERTS TABLE      */
+/* ------------------------------- */
+.archived-vwap-alerts-table .mat-mdc-row:nth-child(even) {
+  background-color: #fde8fc !important; /* Creamy Peach */
+}
+
+.archived-vwap-alerts-table .mat-mdc-row {
+  height: 35px !important;
+}
+
+.archived-vwap-alerts-table .mat-mdc-header-row {
+  /* background-color: #ef5dea !important;   */
+  height: 45px;
+}
+
+.archived-vwap-alerts-table .mat-mdc-row:hover {
+  background-color: #E9ECEF !important; /* Light Gray */
+  cursor: pointer; /* Optional: Add pointer cursor on hover */
+}
+
+/* ------------------------------- */
+/* WORKING VWAP ALERTS TABLE       */
+/* ------------------------------- */
+.working-vwap-alerts-table .mat-mdc-row:nth-child(even) {
+  background-color: #e7fef5 !important; /* Light Seafoam Green */
+}
+
+.working-vwap-alerts-table .mat-mdc-row {
+  height: 35px !important;
+}
+
+.working-vwap-alerts-table .mat-mdc-header-row {
+  /* background-color: #0ce792 !important;   */
+  height: 45px;
+}
+
+.working-vwap-alerts-table .mat-mdc-row:hover {
+  background-color: #E9ECEF !important; /* Light Gray */
+  cursor: pointer; /* Optional: Add pointer cursor on hover */
+}
+
+/* ---------------------------------- */
+/* TRIGGERED VWAP ALERTS TABLE        */
+/* ---------------------------------- */
+.triggered-vwap-alerts-table {
+  width: 70%;
+}
+
+.triggered-vwap-alerts-table .mat-mdc-row:nth-child(even) {
+  background-color: #fdede8 !important; /* Soft Apricot */
+}
+
+.triggered-vwap-alerts-table .mat-mdc-row {
+  height: 35px !important;
+}
+
+.triggered-vwap-alerts-table .mat-mdc-header-row {
+  /* background-color: #ea5a2e !important;   */
+  height: 45px;
+}
+
+.triggered-vwap-alerts-table .mat-mdc-row:hover {
+  background-color: #E9ECEF !important; /* Light Gray */
+  cursor: pointer; /* Optional: Add pointer cursor on hover */
+}

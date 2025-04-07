@@ -1,0 +1,116 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.chart{
+  height: 450px;
+}
+
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+}
+
+
+
+/* SNACKBAR CSS FOR ANGULAR 16 */
+.warning-snackbar {
+  --mdc-snackbar-container-color: #0000b3;
+  --mat-mdc-snack-bar-button-color: white;
+}
+
+/* SNACKBAR CSS FOR ANGULAR 16 */
+.error-snackbar {
+  --mdc-snackbar-container-color: rgb(168, 31, 31);
+  --mat-mdc-snack-bar-button-color: white;
+}
+
+/* SNACKBAR CSS FOR ANGULAR 16 */
+.info-snackbar {
+  --mdc-snackbar-container-color: green;
+  --mat-mdc-snack-bar-button-color: white;
+}
+
+.mat-mdc-input-element{
+  height: 15px !important;
+}
+
+.exchange-table .mat-mdc-header-row {
+  background-color: #e6e6ec !important;
+  color: rgb(14, 13, 13);
+  height: 45px;
+}
+
+.exchange-table .mat-mdc-row:hover {
+  background-color: #f5f4f2 !important; /* Replace with your desired color */
+  cursor: pointer; /* Optional: Add pointer cursor on hover */
+}
+
+.exchanges-link {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  border-radius: 50%;
+  margin-right: 8px;
+  transition: transform 0.3s ease;
+}
+
+/* Add styling for the search box */
+.search-container {
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.search-input {
+  width: 80%;
+  padding: 8px;
+  font-size: 14px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  margin: 0 auto;
+  display: block;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #3f51b5;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;    /* Firefox */
+  -webkit-appearance: none;    /* Chrome, Safari, and WebKit-based browsers */
+  appearance: none;            /* Standard property */
+}
+
+.checkbox-wrapper .mdc-checkbox {
+  background-color:   #ffccee ;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+}
+
+
+.navbar-container {
+  justify-content:   space-evenly;
+  position: fixed; top: 0;
+  left: 0; right: 0;
+  z-index: 1000;
+  background: gray;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.white-chbx-border .mdc-checkbox__background {
+  border-color: white !important;
+
+}

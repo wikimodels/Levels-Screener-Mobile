@@ -1,0 +1,8 @@
+<mat-toolbar class="navbar-container">
+  <button mat-icon-button (click)="onGoToBitcoin()">
+    <mat-icon style="cursor: pointer;" svgIcon="bitcoin"></mat-icon>
+  </button>
+  <!-- <mat-checkbox [checked]="selectionService.hasValue() && isAllSelected()" style="margin-top:4px" (change)="toggleAll()"
+    [indeterminate]="selectionService.hasValue()&& !isAllSelected()"></mat-checkbox> -->
+  <app-alert-menu></app-alert-menu>
+</mat-toolbar>

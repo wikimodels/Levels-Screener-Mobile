@@ -1,0 +1,74 @@
+
+.round-image {
+  width: 20px; /* Set your desired width */
+  height: 20px; /* Set your desired height */
+  border-radius: 50%; /* This makes the image round */
+  object-fit: cover;
+  margin-right: 4px;
+}
+
+
+/* Cleaned CSS with only used classes */
+.controls-container {
+  min-width: 100%;
+  align-items: center;
+  margin-bottom: 40px;
+  position: fixed;
+  top: 64px;
+  width: 100%;
+  background: white;
+  z-index: 1000;
+  display: flex;
+  flex-direction: row;
+  justify-content: center; /* Centered container [[1]] */
+  padding-top:  0px;
+
+}
+
+.button-group {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: center; /* Center buttons within group [[1]] */
+}
+
+.round-image {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 4px;
+}
+
+.symbol-cell {
+  display: flex;
+  align-items: center;
+
+}
+
+.button-icon-margin {
+  margin-left: 6px;
+}
+
+.table-container {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.table-margin {
+  margin-top: 110px;
+}
+
+
+.rotate {
+  animation: rotate 0.6s linear forwards;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(180deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}

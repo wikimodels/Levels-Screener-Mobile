@@ -1,0 +1,9 @@
+.counter {
+  display: flex;
+  align-items: center; /* Vertical alignment */
+  justify-content: center; /* Horizontal alignment */
+  font-size: 20px;
+  width: 100%; /* Ensure the span takes up the full width of the button */
+  height: 100%; /* Ensure the span takes up the full height of the button */
+  padding-bottom: 0; /* Remove unnecessary padding */
+}

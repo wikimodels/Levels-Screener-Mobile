@@ -1,0 +1,21 @@
+<!-- Button with dynamic text -->
+<button mat-button [matMenuTriggerFor]="menu">
+  <mat-icon>menu</mat-icon>
+  {{ selectedAlert }}
+</button>
+
+<!-- Menu items with click handlers -->
+<mat-menu #menu="matMenu">
+  <button mat-menu-item (click)="selectAlert('Triggered Line Alerts')">
+    <mat-icon svgIcon="triggered-alarm"></mat-icon>
+    <span>Triggered Line Alerts</span>
+  </button>
+  <button mat-menu-item (click)="selectAlert('Triggered Vwap Alerts')">
+    <mat-icon svgIcon="alarm"></mat-icon>
+    <span>Triggered Vwap Alerts</span>
+  </button>
+  <button mat-menu-item (click)="selectAlert('Coins')">
+    <mat-icon svgIcon="alarm"></mat-icon>
+    <span>Coins</span>
+  </button>
+</mat-menu>
