@@ -1,7 +1,7 @@
 import { Subscription } from 'rxjs';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
-import { DomSanitizer } from '@angular/platform-browser';
+import { DomSanitizer, Meta, Title } from '@angular/platform-browser';
 import { CoinsGenericService } from 'src/service/coins/coins-generic.service';
 
 @Component({
@@ -14,7 +14,9 @@ export class AppComponent implements OnInit, OnDestroy {
   constructor(
     private coinsService: CoinsGenericService,
     private matIconRegistry: MatIconRegistry,
-    private domSanitizer: DomSanitizer
+    private domSanitizer: DomSanitizer,
+    private meta: Meta,
+    private title: Title
   ) {
     this.registerIcons();
   }
@@ -24,7 +26,9 @@ export class AppComponent implements OnInit, OnDestroy {
         this.coinsService.setCoins(coins);
       })
     );
+    this.updateMetaTags();
   }
+
   registerIcons(): void {
     const icons: { name: string; url: string }[] = [
       { name: 'bingx-sf', url: 'assets/icons/bingx-sf.svg' },
@@ -79,6 +83,66 @@ export class AppComponent implements OnInit, OnDestroy {
         icon.name,
         this.domSanitizer.bypassSecurityTrustResourceUrl(icon.url)
       );
+    });
+  }
+
+  updateMetaTags() {
+    console.log('Updating meta tags...');
+    const baseUrl = window.location.origin; // e.g., 'https://yourwebsite.com'
+    const imageUrl = `${baseUrl}/assets/img/lizard.png`; // Absolute URL for the image
+    console.log(`Image Url --> ${imageUrl}`);
+    // Set the page title
+    this.title.setTitle('PriceLevels Screener');
+
+    // Update Open Graph meta tags (used by Telegram, VK, and others)
+    this.meta.updateTag({
+      property: 'og:title',
+      content: 'Price Levels Screener - Analyze Market Trends',
+    });
+    this.meta.updateTag({
+      property: 'og:description',
+      content: 'Monitoring Price Movements worldwide',
+    });
+    this.meta.updateTag({ property: 'og:image', content: imageUrl });
+    this.meta.updateTag({
+      property: 'og:url',
+      content: 'https://levels-screener-mobile.web.app/',
+    });
+    this.meta.updateTag({ property: 'og:type', content: 'website' });
+
+    // VK-Specific Meta Tags
+    this.meta.updateTag({
+      property: 'vk:image',
+      content: imageUrl,
+    });
+    this.meta.updateTag({
+      property: 'vk:title',
+      content: 'Price Levels Screener - Analyze Market Trends',
+    });
+    this.meta.updateTag({
+      property: 'vk:description',
+      content: 'Monitoring Price Movements worldwide',
+    });
+
+    // Twitter Card Meta Tags (optional but good for broader compatibility)
+    this.meta.updateTag({
+      name: 'twitter:card',
+      content: 'summary_large_image',
+    });
+    this.meta.updateTag({
+      name: 'twitter:title',
+      content: 'Price Levels Screener - Analyze Market Trends',
+    });
+    this.meta.updateTag({
+      name: 'twitter:description',
+      content: 'Monitoring Price Movements worldwide',
+    });
+    this.meta.updateTag({ name: 'twitter:image', content: imageUrl });
+
+    // Standard Meta Tags
+    this.meta.updateTag({
+      name: 'description',
+      content: 'Monitoring Price Movements worldwide',
     });
   }
 
