@@ -1,0 +1,40 @@
+<div class="controls-container fixed-panel" id="header"> <!-- GROUP -->
+  <div class="button-group">
+
+    <!-- OPEN IN TV BUTTON -->
+    <button mat-icon-button (click)="onOpenTradingview()">
+      <mat-icon svgIcon="tv-negative"></mat-icon>
+    </button>
+    <!-- CLOSE ALL WINDOWS -->
+    <button mat-icon-button (click)="rotateIcon()" [disabled]="isRotating">
+      <mat-icon [ngClass]="{ 'rotate': isRotating }">
+        sync
+      </mat-icon>
+    </button>
+
+    <button [disabled]="isDeleteDisable" mat-icon-button (click)="onDeleteSelected()">
+      <mat-icon>
+        delete
+      </mat-icon>
+    </button>
+
+    <button *ngIf="isAscending" mat-icon-button (click)="sortAlerts()">
+      <mat-icon svgIcon="sort-down">
+      </mat-icon>
+    </button>
+
+    <button *ngIf="!isAscending" mat-icon-button (click)="sortAlerts()">
+      <mat-icon svgIcon="sort-up">
+      </mat-icon>
+    </button>
+
+    <button mat-icon-button (click)="toggleAll()">
+      <span class="counter"> {{counter}}</span>
+    </button>
+  </div>
+
+
+</div>
+<div class="table-container">
+  <app-triggered-vwap-alerts-field [alerts]="alerts"></app-triggered-vwap-alerts-field>
+</div>

@@ -7,6 +7,16 @@
   margin-right: 4px;
 }
 
+.field{
+  width: 100%;
+  margin-top: 115px;
+  padding-bottom: 40px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
 
 /* Cleaned CSS with only used classes */
 .controls-container {

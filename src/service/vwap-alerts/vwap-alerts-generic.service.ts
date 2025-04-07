@@ -84,39 +84,13 @@ export class VwapAlertsGenericService {
       );
   }
 
-  public addOne(collectionName: string, alert: VwapAlert): void {
-    const currentAlerts = this.getAlerts(collectionName);
-    this.setAlerts(collectionName, [...currentAlerts, alert]);
-
-    // HTTP request to add a VwapAlert with query parameters
-    const params = createHttpParams({ collectionName });
-    const options = { ...this.httpOptions, params };
-    console.log('VwapAlert to add --> ', alert);
-    this.http
-      .post<InsertResult>(
-        `${VWAP_ALERTS_URLS.vwapAlertsAddOneUrl}`,
-        { alert },
-        options
-      )
-      .subscribe({
-        next: (response: InsertResult) => {
-          console.log(
-            'vwap-alerts-generic.service Add response --> ',
-            response
-          );
-          const msg = `VWAP Alert successfully added`;
-          this.snackbarService.showSnackBar(msg, '');
-        },
-        error: (error) => this.handleError(error),
-      });
-  }
-
-  public deleteMany(collectionName: string, ids: string[]): void {
+  public deleteMany(collectionName: string, ids: string[]): Observable<any> {
     const currentAlerts = this.getAlerts(collectionName);
     const remainingAlerts = currentAlerts.filter(
       (alert) => !ids.includes(alert.id)
     );
     this.setAlerts(collectionName, remainingAlerts);
+
     const params = createHttpParams({ collectionName });
 
     const options = {
@@ -124,114 +98,23 @@ export class VwapAlertsGenericService {
       params: params,
       body: { ids },
     };
+
     console.log(options);
-    this.http
-      .delete<boolean>(`${VWAP_ALERTS_URLS.vwapAlertsDeleteManyUrl}`, options)
-      .subscribe({
-        next: (response: boolean) => {
-          console.log(
-            'vwap-alerts-generic.serviceDelete response --> ',
-            response
+
+    return this.http
+      .delete<any>(`${VWAP_ALERTS_URLS.vwapAlertsDeleteManyUrl}`, options)
+      .pipe(
+        tap((response) => {
+          console.log('deleteMany response --> ', response);
+          this.snackbarService.showSnackBar('Ok');
+        }),
+        catchError((error) => {
+          this.handleError(error);
+          return throwError(
+            () => new Error(`Failed to delete alerts: ${error.message}`)
           );
-          const msg = `VWAP Alert(s) successfully deleted`;
-          this.snackbarService.showSnackBar(msg, '');
-        },
-        error: (error) => this.handleError(error),
-      });
-  }
-
-  public updateOne(
-    collectionName: string,
-    filter: Partial<VwapAlert>,
-    updatedData: Partial<VwapAlert>
-  ): void {
-    // 🔹 Get current alerts
-    const currentAlerts = this.getAlerts(collectionName);
-
-    // 🔹 Update alerts only if the filter matches
-    const updatedAlerts = currentAlerts.map((VwapAlert) =>
-      VwapAlert.id === filter.id ? { ...VwapAlert, ...updatedData } : VwapAlert
-    );
-
-    // 🔹 Update local state
-    this.setAlerts(collectionName, updatedAlerts);
-
-    // 🔹 Prepare HTTP request
-    const params = createHttpParams({ collectionName });
-    const options = { ...this.httpOptions, params };
-
-    // 🔹 Send update request to the server
-    this.http
-      .put<boolean>(
-        `${VWAP_ALERTS_URLS.vwapAlertsUpdateOneUrl}`,
-        { filter, updatedData },
-        options
-      )
-      .subscribe({
-        next: (response: boolean) => {
-          if (response) {
-            this.snackbarService.showSnackBar(`✅ Update successful`, '');
-          } else {
-            this.snackbarService.showSnackBar(
-              `⚠️ No matching documents found.`,
-              ''
-            );
-          }
-        },
-        error: (error) => {
-          console.error('❌ Update failed:', error);
-          this.snackbarService.showSnackBar(
-            '❌ Error updating VwapAlert!',
-            'Close'
-          );
-        },
-      });
-  }
-
-  public moveMany(
-    sourceCollection: string,
-    targetCollection: string,
-    ids: string[]
-  ): void {
-    const sourceAlerts = this.getAlerts(sourceCollection);
-    const destinationAlerts = this.getAlerts(targetCollection);
-
-    // ✅ Filter alerts to move based on provided IDs
-    const alertsToMove = sourceAlerts.filter((VwapAlert) =>
-      ids.includes(VwapAlert.id)
-    );
-    const remainingSourceAlerts = sourceAlerts.filter(
-      (VwapAlert) => !ids.includes(VwapAlert.id)
-    );
-
-    // ✅ Update source and destination collections locally
-    this.setAlerts(sourceCollection, remainingSourceAlerts);
-    this.setAlerts(targetCollection, [...destinationAlerts, ...alertsToMove]);
-
-    // ✅ HTTP request to move alerts
-    const params = createHttpParams({
-      sourceCollection,
-      targetCollection,
-    });
-    const options = { ...this.httpOptions, params };
-
-    this.http
-      .post<MoveResult>(
-        `${VWAP_ALERTS_URLS.vwapAlertsMoveManyUrl}`,
-        { ids },
-        options
-      )
-      .subscribe({
-        next: (response: MoveResult) => {
-          console.log(
-            'vwap-alerts-generic.service Move response --> ',
-            response
-          );
-          const msg = `VWAP Alerts successfully moved`;
-          this.snackbarService.showSnackBar(msg, '');
-        },
-        error: (error) => this.handleError(error),
-      });
+        })
+      );
   }
 
   //---------------------------------------------

@@ -1,0 +1,14 @@
+<div matRipple class="card-container mat-elevation-z4" (click)="toggleItem(item)" [class.selected]="isSelected(item)">
+
+  <div style="display:flex; flex-direction: row; gap:4px">
+    <div class="logo">
+      <img [src]="item.imageUrl ? item.imageUrl : 'assets/img/noname.png'" alt="logo" />
+    </div>
+
+
+    <div class="symbol-name">{{ item.symbol }} ({{item.category}})</div>
+  </div>
+
+  <div class="alert-action">{{ item.anchorTimeStr }} </div>
+  <div class="activation-time">{{item.activationTimeStr}}</div>
+</div>

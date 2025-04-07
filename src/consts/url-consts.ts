@@ -6,16 +6,8 @@ export const TRIGGERED_ALERTS = AlertsCollection.TriggeredAlerts;
 export const ARCHIVED_ALERTS = AlertsCollection.ArchivedAlerts;
 export const ALERTS_AT_WORK = AlertsCollection.WorkingAlerts;
 
-export const EXCHANGES = 'exchanges';
-export const COINS = 'coins';
-export const ADMIN = 'admin';
-export const WORK = 'work';
-export const KLINE_CHART = 'kline-chart';
-export const LIGHTWEIGHT_CHART = 'lightweight-chart';
-
-export const VWAP_TRIGGERED_ALERTS = 'vwap-' + AlertsCollection.TriggeredAlerts;
-export const VWAP_ARCHIVED_ALERTS = 'vwap-' + AlertsCollection.ArchivedAlerts;
-export const VWAP_ALERTS_AT_WORK = 'vwap-' + AlertsCollection.WorkingAlerts;
+export const TRIGGERED_LINE_ALERTS = 'triggered-line-alerts';
+export const TRIGGERED_VWAP_ALERTS = 'triggered-vwap-alerts';
 
 //URLS
 const baseURL = env.baseURL;
@@ -44,13 +36,6 @@ export const WORKING_COINS_URLS = {
   updateWorkingCoinUrl: `${baseURL}/working-coins/update/one`,
   deleteWorkingCoinsUrl: `${baseURL}/working-coins/delete/many`,
 };
-
-// export const ANCHORED_VWAP_URLS = {
-//   anchoredPointsBySymbolUrl: `${baseURL}/anchor-point/symbol`,
-//   anchoredPointsAllUrl: `${baseURL}/anchor-point/all`,
-//   anchoredPointAddUrl: `${baseURL}/anchor-point/add`,
-//   anchoredPointDeleteUrl: `${baseURL}/anchor-point/delete`,
-// };
 
 export const GENERAL_URLS = {
   refreshReposUrl: `${baseURL}/refresh-repos`,

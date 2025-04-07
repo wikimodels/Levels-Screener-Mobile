@@ -12,16 +12,17 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 
 import { SnackbarComponent } from './shared/snackbar/snackbar.component';
 
-import { TriggeredAlertsTableComponent } from './triggered-alerts/triggered-alerts-table/triggered-alerts-table.component';
-import { TriggeredAlertsComponent } from './triggered-alerts/triggered-alerts.component';
-
-import { VwapTriggeredAlertsComponent } from './vwap-triggered-alerts/vwap-triggered-alerts.component';
-import { VwapTriggeredAlertsTableComponent } from './vwap-triggered-alerts/vwap-triggered-alerts-table/vwap-triggered-alerts-table.component';
 import { AlertMenuComponent } from './nav-bar/alert-menu/alert-menu.component';
 
 import { WorkItemComponent } from './coins/work-item/work-item.component';
 import { CoinsComponent } from './coins/coins.component';
 import { CoinsFieldComponent } from './coins/coins-field/coins-field.component';
+import { TriggeredLineAlertsComponent } from './triggered-line-alerts/triggered-line-alerts.component';
+import { TriggeredLineAlertsFieldComponent } from './triggered-line-alerts/triggered-line-alerts-field/triggered-line-alerts-field.component';
+import { TriggeredLineAlertItemComponent } from './triggered-line-alerts/triggered-line-alert-item/triggered-line-alert-item.component';
+import { TriggeredVwapAlertsFieldComponent } from './triggered-vwap-alerts/triggered-vwap-alerts-field/triggered-vwap-alerts-field.component';
+import { TriggeredVwapAlertItemComponent } from './triggered-vwap-alerts/triggered-vwap-alert-item/triggered-vwap-alert-item.component';
+import { TriggeredVwapAlertsComponent } from './triggered-vwap-alerts/triggered-vwap-alerts.component';
 
 @NgModule({
   declarations: [
@@ -29,13 +30,15 @@ import { CoinsFieldComponent } from './coins/coins-field/coins-field.component';
     AlertMenuComponent,
     NavBarComponent,
     SnackbarComponent,
-    TriggeredAlertsComponent,
-    TriggeredAlertsTableComponent,
-    VwapTriggeredAlertsComponent,
-    VwapTriggeredAlertsTableComponent,
     WorkItemComponent,
     CoinsComponent,
     CoinsFieldComponent,
+    TriggeredLineAlertsComponent,
+    TriggeredLineAlertsFieldComponent,
+    TriggeredLineAlertItemComponent,
+    TriggeredVwapAlertsFieldComponent,
+    TriggeredVwapAlertItemComponent,
+    TriggeredVwapAlertsComponent,
   ],
   imports: [
     FormsModule,

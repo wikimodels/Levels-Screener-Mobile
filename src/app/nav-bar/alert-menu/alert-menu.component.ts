@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { TRIGGERED_ALERTS, VWAP_TRIGGERED_ALERTS } from 'src/consts/url-consts';
+import {
+  TRIGGERED_LINE_ALERTS,
+  TRIGGERED_VWAP_ALERTS,
+} from 'src/consts/url-consts';
 
 @Component({
   selector: 'app-alert-menu',
@@ -13,11 +16,11 @@ export class AlertMenuComponent implements OnInit {
   ngOnInit(): void {}
 
   goToTriggeredLineAlerts() {
-    this.router.navigate([TRIGGERED_ALERTS]);
+    this.router.navigate([TRIGGERED_LINE_ALERTS]);
   }
 
   goToVwapTriggeredAlerts() {
-    this.router.navigate([VWAP_TRIGGERED_ALERTS]);
+    this.router.navigate([TRIGGERED_VWAP_ALERTS]);
   }
   goToCoins() {
     this.router.navigate(['coins']);
