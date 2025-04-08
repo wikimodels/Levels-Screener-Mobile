@@ -1,7 +1,7 @@
 {
-  "name": "Price Levels Screener",
-  "short_name": "PL Screener",
-  "theme_color": "#ffffe6",
+  "name": "Price Levels Alerts",
+  "short_name": "PL Alerts",
+  "theme_color": "#ffffb3",
   "background_color": "#ffffff",
   "display": "standalone",
   "scope": "./",

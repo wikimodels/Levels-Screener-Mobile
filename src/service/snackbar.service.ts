@@ -13,7 +13,7 @@ export class SnackbarService {
   showSnackBar(
     message: string,
     action: string = '',
-    duration: number = 500,
+    duration: number = 1000,
     snackbarType: SnackbarType = SnackbarType.Info
   ) {
     // SNACKBAR CSS CLASSES
@@ -23,8 +23,8 @@ export class SnackbarService {
 
     this.snackBar.open(message, action, {
       duration: duration,
-      horizontalPosition: 'left',
-      verticalPosition: 'top',
+      horizontalPosition: 'center',
+      verticalPosition: 'bottom',
       panelClass: [snackbarType],
     });
   }
