@@ -3,6 +3,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer, Meta, Title } from '@angular/platform-browser';
 import { CoinsGenericService } from 'src/service/coins/coins-generic.service';
+import { SwUpdateService } from 'src/service/sw-update.service';
 
 @Component({
   selector: 'app-root',
@@ -12,6 +13,7 @@ import { CoinsGenericService } from 'src/service/coins/coins-generic.service';
 export class AppComponent implements OnInit, OnDestroy {
   subscription = new Subscription();
   constructor(
+    private swUpdateService: SwUpdateService,
     private coinsService: CoinsGenericService,
     private matIconRegistry: MatIconRegistry,
     private domSanitizer: DomSanitizer,
@@ -21,6 +23,8 @@ export class AppComponent implements OnInit, OnDestroy {
     this.registerIcons();
   }
   ngOnInit(): void {
+    this.swUpdateService.init();
+
     this.subscription.add(
       this.coinsService.loadCoins().subscribe((coins) => {
         this.coinsService.setCoins(coins);

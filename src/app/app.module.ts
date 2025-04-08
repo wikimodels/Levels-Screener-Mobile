@@ -1,6 +1,6 @@
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -20,6 +20,7 @@ import { TriggeredLineAlertItemComponent } from './triggered-line-alerts/trigger
 import { TriggeredVwapAlertsFieldComponent } from './triggered-vwap-alerts/triggered-vwap-alerts-field/triggered-vwap-alerts-field.component';
 import { TriggeredVwapAlertItemComponent } from './triggered-vwap-alerts/triggered-vwap-alert-item/triggered-vwap-alert-item.component';
 import { TriggeredVwapAlertsComponent } from './triggered-vwap-alerts/triggered-vwap-alerts.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,12 @@ import { TriggeredVwapAlertsComponent } from './triggered-vwap-alerts/triggered-
     AppMaterialModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: !isDevMode(),
+      // Register the ServiceWorker as soon as the application is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent],
