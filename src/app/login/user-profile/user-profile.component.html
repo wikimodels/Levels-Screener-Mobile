@@ -3,7 +3,7 @@
 <div *ngIf="userData.isWhitelisted" style="display: flex; align-items: center; gap: 8px;">
   <div *ngIf="userData" class="user-profile">
     <img [src]="userData.picture" class="profile-picture" />
-    <span class="greeting">Hi, {{ userData.givenName }}!</span>
+    <!-- <span class="greeting">Hi, {{ userData.givenName }}!</span> -->
   </div>
   <mat-icon style="cursor: pointer" (click)="onLogout()" matTooltip="Log Out">logout</mat-icon>
 </div>

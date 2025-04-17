@@ -6,22 +6,19 @@ import {
   TRIGGERED_LINE_ALERTS,
   TRIGGERED_VWAP_ALERTS,
 } from 'src/consts/url-consts';
-import { TriggeredLineAlertsComponent } from './triggered-line-alerts/triggered-line-alerts.component';
-import { TriggeredVwapAlertsComponent } from './triggered-vwap-alerts/triggered-vwap-alerts.component';
-import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './login/guards/auth.guard';
 // Import your route constants
 
 const routes: Routes = [
-  { path: '', component: TriggeredLineAlertsComponent },
   {
-    path: TRIGGERED_LINE_ALERTS,
+    path: '',
     loadChildren: () =>
       import('./triggered-line-alerts/triggered-line-alerts.module').then(
         (m) => m.TriggeredLineAlertsModule
       ),
     canActivate: [AuthGuard],
   },
+
   {
     path: TRIGGERED_VWAP_ALERTS,
     loadChildren: () =>
@@ -35,8 +32,8 @@ const routes: Routes = [
     loadChildren: () =>
       import('./login/login.module').then((m) => m.LoginModule), // Replace with your login Component,
   },
-
-  { path: '**', redirectTo: '' }, // Your existing routes
+  { path: TRIGGERED_LINE_ALERTS, redirectTo: '' },
+  { path: '**', redirectTo: '', canActivate: [AuthGuard] },
 ];
 
 @NgModule({
