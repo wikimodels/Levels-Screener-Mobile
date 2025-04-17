@@ -21,6 +21,11 @@ import { TriggeredVwapAlertsFieldComponent } from './triggered-vwap-alerts/trigg
 import { TriggeredVwapAlertItemComponent } from './triggered-vwap-alerts/triggered-vwap-alert-item/triggered-vwap-alert-item.component';
 import { TriggeredVwapAlertsComponent } from './triggered-vwap-alerts/triggered-vwap-alerts.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { LoginComponent } from './login/login.component';
+import { UserProfileComponent } from './login/user-profile/user-profile.component';
+import { LoginModule } from './login/login.module';
+import { TriggeredLineAlertsModule } from './triggered-line-alerts/triggered-line-alerts.module';
+import { TriggeredVwapAlertsModule } from './triggered-vwap-alerts/triggered-vwap-alerts.module';
 
 @NgModule({
   declarations: [
@@ -28,12 +33,6 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     AlertMenuComponent,
     NavBarComponent,
     SnackbarComponent,
-    TriggeredLineAlertsComponent,
-    TriggeredLineAlertsFieldComponent,
-    TriggeredLineAlertItemComponent,
-    TriggeredVwapAlertsFieldComponent,
-    TriggeredVwapAlertItemComponent,
-    TriggeredVwapAlertsComponent,
   ],
   imports: [
     FormsModule,
@@ -43,11 +42,14 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     AppMaterialModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    LoginModule,
+    TriggeredLineAlertsModule,
+    TriggeredVwapAlertsModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: !isDevMode(),
       // Register the ServiceWorker as soon as the application is stable
       // or after 30 seconds (whichever comes first).
-      registrationStrategy: 'registerWhenStable:30000'
+      registrationStrategy: 'registerWhenStable:30000',
     }),
   ],
   providers: [],

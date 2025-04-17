@@ -8,6 +8,7 @@ export const ALERTS_AT_WORK = AlertsCollection.WorkingAlerts;
 
 export const TRIGGERED_LINE_ALERTS = 'triggered-line-alerts';
 export const TRIGGERED_VWAP_ALERTS = 'triggered-vwap-alerts';
+export const LOGIN = 'login';
 
 export const VIBRATIONS = {
   routine: 8,
@@ -42,6 +43,7 @@ export const WORKING_COINS_URLS = {
 
 export const GENERAL_URLS = {
   refreshReposUrl: `${baseURL}/refresh-repos`,
+  userAuthUrl: `${baseURL}/user-auth`,
 };
 
 export const VWAP_ALERTS_URLS = {
