@@ -145,3 +145,52 @@ input[type=number] {
   padding-bottom: 0; /* Remove unnecessary padding */
 }
 
+.card-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 10px;
+  padding: 15px;
+  gap: 4px;
+  width: calc(fit-content + 8px);
+  margin: 4px 4px;
+  cursor: pointer;
+
+}
+
+.card-container .logo img {
+  width: 24px;  /* ✅ Smaller coin image */
+  height: 24px;
+  object-fit: contain;
+  border-radius: 50%;
+}
+
+.symbol-name {
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+  margin-right: 4px;
+  white-space: nowrap;
+  padding-top: 2px;
+}
+
+
+.exchange-link img {
+  width: 20px; /* ✅ Properly sized exchange logos */
+  height: 20px;
+  object-fit: contain;
+  border-radius: 50%;
+}
+
+.selected {
+  background-color: #e8ebee;
+}
+
+.activation-time{
+  font-weight: 700 !important;
+}
+
+.alert-action{
+  font-style: italic;
+  font-weight: 500;
+}
