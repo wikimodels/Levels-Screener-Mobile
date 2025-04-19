@@ -39,12 +39,16 @@ export class TriggeredVwapAlertsComponent implements OnInit, OnDestroy {
       this.alertsService
         .alerts$(AlertsCollection.TriggeredAlerts)
         .subscribe((data: VwapAlert[]) => {
+          this.isRotating = true;
           this.isDeleteDisable = data.length === 0 ? true : false;
-          data.sort((a, b) => {
+          this.alerts = data.sort((a, b) => {
             if (a.activationTime === undefined) return 1; // Place undefined values last
             if (b.activationTime === undefined) return -1; // Place undefined values last
             return Number(b.activationTime) - Number(a.activationTime); // Sort by activationTime in descending order
           });
+          setTimeout(() => {
+            this.isRotating = false;
+          }, 1000);
         })
     );
 
@@ -56,6 +60,7 @@ export class TriggeredVwapAlertsComponent implements OnInit, OnDestroy {
   }
 
   refreshDataTable() {
+    this.isRotating = true;
     this.subscription.add(
       this.alertsService
         .getAllAlerts(AlertsCollection.TriggeredAlerts)
@@ -63,12 +68,12 @@ export class TriggeredVwapAlertsComponent implements OnInit, OnDestroy {
           console.log('Triggered Alerts data', data);
           this.alerts = data;
           this.selectionService.clear();
+          this.isRotating = true;
+          setTimeout(() => {
+            this.isRotating = false;
+          }, 1000);
         })
     );
-    this.isRotating = true;
-    setTimeout(() => {
-      this.isRotating = false;
-    }, 1000);
   }
 
   toggleAll(): void {

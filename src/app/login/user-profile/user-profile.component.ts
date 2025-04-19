@@ -2,9 +2,10 @@ import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
-import { LOGIN } from 'src/consts/url-consts';
+import { LOGIN, VIBRATIONS } from 'src/consts/url-consts';
 import { AuthService } from 'src/app/login/service/auth.service';
 import { UserData } from '../model/user/user-data';
+import { runVibration } from 'src/functions/run-vibration';
 
 @Component({
   selector: 'app-user-profile',
@@ -31,11 +32,14 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   }
 
   onLogout(): void {
+    runVibration(VIBRATIONS.routine);
     this.authService.logout();
   }
 
   onGoToLogin(): void {
+    runVibration(VIBRATIONS.routine);
     this.router.navigate([LOGIN]);
+    window.location.reload();
   }
 
   ngOnDestroy(): void {

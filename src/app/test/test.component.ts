@@ -29,8 +29,6 @@ export class TestComponent implements AfterViewInit {
         {
           theme: 'outline',
           size: 'large',
-          type: 'standard',
-          shape: 'pill',
           text: 'continue_with',
         }
       );

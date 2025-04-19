@@ -1,5 +1,5 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
-/scr/app/environments
+/src/app/environments
 # Compiled output
 /dist
 /tmp

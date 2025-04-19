@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 
-import { Subscription } from 'rxjs';
+import { Subscription, takeUntil } from 'rxjs';
 import { AlertsGenericService } from 'src/service/alerts/alerts-generic.service';
 import { CoinLinksService } from 'src/service/coin-links.service';
 import { SelectionService } from 'src/service/selection.service';
@@ -32,6 +32,7 @@ export class TriggeredLineAlertsComponent implements OnInit, OnDestroy {
 
   // Lifecycle Hooks
   ngOnInit(): void {
+    this.isRotating = true;
     window.scrollTo(0, 0);
     this.refreshDataTable();
     this.subscription.add(
@@ -44,6 +45,9 @@ export class TriggeredLineAlertsComponent implements OnInit, OnDestroy {
             if (b.activationTime === undefined) return -1; // Place undefined values last
             return Number(b.activationTime) - Number(a.activationTime); // Sort by activationTime in descending order
           });
+          setTimeout(() => {
+            this.isRotating = false;
+          }, 1000);
         })
     );
 
@@ -55,6 +59,7 @@ export class TriggeredLineAlertsComponent implements OnInit, OnDestroy {
   }
 
   refreshDataTable() {
+    this.isRotating = true;
     this.subscription.add(
       this.alertsService
         .getAllAlerts(AlertsCollection.TriggeredAlerts)
@@ -62,6 +67,9 @@ export class TriggeredLineAlertsComponent implements OnInit, OnDestroy {
           console.log('Triggered Alerts data', data);
           this.alerts = data;
           this.selectionService.clear();
+          setTimeout(() => {
+            this.isRotating = false;
+          }, 1000);
         })
     );
     this.isRotating = true;
