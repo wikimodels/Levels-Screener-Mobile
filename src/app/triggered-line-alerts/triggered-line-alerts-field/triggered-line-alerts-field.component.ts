@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Alert } from 'models/alerts/alert';
+import { Alert } from 'src/app/models/alerts/alert';
 
 @Component({
   selector: 'app-triggered-line-alerts-field',

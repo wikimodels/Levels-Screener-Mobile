@@ -1,11 +1,12 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Alert } from 'models/alerts/alert';
-import { AlertsCollection } from 'models/alerts/alerts-collections';
-import { Coin } from 'models/coin/coin';
+
 import { Subscription } from 'rxjs';
 import { AlertsGenericService } from 'src/service/alerts/alerts-generic.service';
 import { CoinLinksService } from 'src/service/coin-links.service';
 import { SelectionService } from 'src/service/selection.service';
+import { Alert } from '../models/alerts/alert';
+import { AlertsCollection } from '../models/alerts/alerts-collections';
+import { Coin } from '../models/coin/coin';
 
 @Component({
   selector: 'app-triggered-line-alerts',
@@ -145,6 +146,7 @@ export class TriggeredLineAlertsComponent implements OnInit, OnDestroy {
   onDeleteSelected() {
     const alerts = this.selectionService.selectedValues() as Alert[];
     const ids = alerts.map((a) => a.id);
+    if (alerts.length === 0) return;
     this.alertsService
       .deleteMany(AlertsCollection.TriggeredAlerts, ids)
       .subscribe((data) => {

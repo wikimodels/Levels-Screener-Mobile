@@ -1,0 +1,11 @@
+The Firebase authentication error (auth/argument-error) occurs because:
+1. Google Sign-In provider is likely not enabled in Firebase Console
+2. The app domain/localhost may not be authorized in Firebase Authentication settings
+3. The API key might have restrictions in Google Cloud Console
+
+To resolve this:
+1. Go to Firebase Console → Authentication → Sign-in method
+2. Enable Google Sign-In provider
+3. Add your app domain and localhost to authorized domains
+4. Check API key restrictions in Google Cloud Console
+5. Verify the Firebase configuration matches your project settings

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { VIBRATIONS } from 'src/consts/url-consts';
 import { runVibration } from 'src/functions/run-vibration';
 
@@ -10,7 +11,10 @@ import { SelectionService } from 'src/service/selection.service';
   styleUrls: ['./nav-bar.component.css'],
 })
 export class NavBarComponent {
-  constructor(public selectionService: SelectionService<any>) {}
+  constructor(
+    public selectionService: SelectionService<any>,
+    private router: Router
+  ) {}
   onGoToBitcoin() {
     runVibration(VIBRATIONS.routine);
     window.open(
@@ -18,4 +22,7 @@ export class NavBarComponent {
       '_blank'
     );
   }
+  // test() {
+  //   this.router.navigate(['test']);
+  // }
 }

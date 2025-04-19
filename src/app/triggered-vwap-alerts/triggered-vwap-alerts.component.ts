@@ -1,12 +1,13 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { AlertsCollection } from 'models/alerts/alerts-collections';
-import { Coin } from 'models/coin/coin';
-import { VwapAlert } from 'models/vwap/vwap-alert';
+
 import { Subscription } from 'rxjs';
 
 import { CoinLinksService } from 'src/service/coin-links.service';
 import { SelectionService } from 'src/service/selection.service';
 import { VwapAlertsGenericService } from 'src/service/vwap-alerts/vwap-alerts-generic.service';
+import { AlertsCollection } from '../models/alerts/alerts-collections';
+import { Coin } from '../models/coin/coin';
+import { VwapAlert } from '../models/vwap/vwap-alert';
 
 @Component({
   selector: 'app-triggered-vwap-alerts',
@@ -146,6 +147,7 @@ export class TriggeredVwapAlertsComponent implements OnInit, OnDestroy {
   onDeleteSelected() {
     const alerts = this.selectionService.selectedValues() as VwapAlert[];
     const ids = alerts.map((a) => a.id);
+    if (alerts.length === 0) return;
     this.alertsService
       .deleteMany(AlertsCollection.TriggeredAlerts, ids)
       .subscribe((data) => {

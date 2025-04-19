@@ -3,11 +3,12 @@ import { Injectable } from '@angular/core';
 import { Observable, BehaviorSubject, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { SnackbarService } from '../snackbar.service';
-import { DeleteResult } from 'models/mongodb/operations';
-import { SnackbarType } from 'models/shared/snackbar-type';
-import { Alert } from 'models/alerts/alert';
+
 import { ALERTS_URLS } from 'src/consts/url-consts';
 import { createHttpParams } from 'src/functions/create-params';
+import { Alert } from 'src/app/models/alerts/alert';
+import { DeleteResult } from 'src/app/models/mongodb/operations';
+import { SnackbarType } from 'src/app/models/shared/snackbar-type';
 
 @Injectable({ providedIn: 'root' })
 export class AlertsGenericService {

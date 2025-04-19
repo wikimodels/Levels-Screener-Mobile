@@ -110,7 +110,13 @@ export class AuthService {
           this.logout();
           return;
         } else {
-          this.userDataSubject.next(userData);
+          this.userDataSubject.next(userData); // Update userData$
+          // this.snackbarService.showSnackBar(
+          //   'Successfully authenticated',
+          //   '',
+          //   3000,
+          //   SnackbarType.Info
+          // );
           this.ngZone.run(() => this.router.navigate(['/']));
         }
       }),

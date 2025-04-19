@@ -6,9 +6,8 @@ import { SnackbarService } from '../snackbar.service';
 
 import { VWAP_ALERTS_URLS } from 'src/consts/url-consts';
 import { createHttpParams } from 'src/functions/create-params';
-import { InsertResult, MoveResult } from 'models/mongodb/operations';
-import { SnackbarType } from 'models/shared/snackbar-type';
-import { VwapAlert } from 'models/vwap/vwap-alert';
+import { VwapAlert } from 'src/app/models/vwap/vwap-alert';
+import { SnackbarType } from 'src/app/models/shared/snackbar-type';
 
 @Injectable({ providedIn: 'root' })
 export class VwapAlertsGenericService {
@@ -70,7 +69,7 @@ export class VwapAlertsGenericService {
         tap((sortedAlerts) => {
           this.setAlerts(collectionName, []);
           this.setAlerts(collectionName, sortedAlerts);
-          this.snackbarService.showSnackBar('Ok', '');
+          this.snackbarService.showThumbUpIcon();
           console.log(
             `Brought from server --> CollectionName: ${collectionName}`,
             sortedAlerts

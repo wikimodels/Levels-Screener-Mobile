@@ -30,10 +30,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 /* SNACKBAR CSS FOR ANGULAR 16 */
 
-.info-snackbar   {
 
-    /* Maximum width */
-}
 
 /* Override the max-width of the snackbar */
 .info-snackbar .mat-mdc-snack-bar-container {
@@ -44,7 +41,19 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .info-snackbar .mdc-snackbar__surface {
   width: 60px !important;
   text-align: center;
-  --mdc-snackbar-container-color: #3a1313;
+  --mdc-snackbar-container-color: #d1c8c8;
+}
+
+
+.thumb-up-snackbar .mdc-snackbar__surface{
+  background-color: transparent !important;
+  box-shadow: none !important;
+  --mdc-snackbar-container-color: transparent;
+  --mdc-snackbar-supporting-text-color: orange;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  font-size: 24px;
 }
 
 /* .info-snackbar {

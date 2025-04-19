@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { VwapAlert } from 'models/vwap/vwap-alert';
+import { VwapAlert } from 'src/app/models/vwap/vwap-alert';
 import { VIBRATIONS } from 'src/consts/url-consts';
 import { runVibration } from 'src/functions/run-vibration';
 import { SelectionService } from 'src/service/selection.service';

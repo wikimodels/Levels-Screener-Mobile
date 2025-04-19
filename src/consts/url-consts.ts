@@ -1,5 +1,5 @@
-import { AlertsCollection } from '../../models/alerts/alerts-collections';
-import { env } from 'environment/environment';
+import { AlertsCollection } from 'src/app/models/alerts/alerts-collections';
+import { env } from 'src/environments/environment';
 
 //COMPONENTS
 export const TRIGGERED_ALERTS = AlertsCollection.TriggeredAlerts;
@@ -44,6 +44,7 @@ export const WORKING_COINS_URLS = {
 export const GENERAL_URLS = {
   refreshReposUrl: `${baseURL}/refresh-repos`,
   userAuthUrl: `${baseURL}/user-auth`,
+  emailValidationUrl: `${baseURL}/email/validate`,
 };
 
 export const VWAP_ALERTS_URLS = {
