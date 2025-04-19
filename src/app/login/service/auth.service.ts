@@ -16,6 +16,7 @@ import {
   signInWithPopup,
   GoogleAuthProvider,
   User,
+  signInWithCredential,
 } from 'firebase/auth';
 
 import { SnackbarType } from 'src/app/models/shared/snackbar-type';
@@ -121,6 +122,47 @@ export class AuthService {
   /**
    * Validate email with backend
    */
+
+  signInWithGoogleIdToken(idToken: string): Observable<any> {
+    const credential = GoogleAuthProvider.credential(idToken); // Create credential [[7]]
+    return from(signInWithCredential(this.auth, credential)).pipe(
+      // Convert Promise to Observable [[1]]
+      switchMap((result) => {
+        const firebaseUser = result.user;
+        const userData: UserData = {
+          ...this.mapFirebaseUser(firebaseUser),
+        };
+        return from(firebaseUser.getIdToken()).pipe(
+          // Extract ID token [[9]]
+          switchMap((token) =>
+            this.validateEmailWithBackend(userData.email).pipe(
+              // Validate email with backend
+              map((backendEmailData) => ({
+                ...userData,
+                ...backendEmailData,
+              }))
+            )
+          )
+        );
+      }),
+      tap((userData) => {
+        if (!userData.isWhitelisted) {
+          this.snackbarService.showSnackBar(
+            // Handle unauthorized users [[5]]
+            `${userData.givenName}, you are not welcome here`,
+            '',
+            3000,
+            SnackbarType.Info
+          );
+          this.logout();
+        } else {
+          this.userDataSubject.next(userData); // Update user data [[2]]
+          this.ngZone.run(() => this.router.navigate(['/'])); // Navigate [[5]]
+        }
+      }),
+      catchError((error) => this.handleError(error)) // Error handling [[6]]
+    );
+  }
 
   private validateEmailWithBackend(email: string): Observable<UserData> {
     console.log('User email', email);

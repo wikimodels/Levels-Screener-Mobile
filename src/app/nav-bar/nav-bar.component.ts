@@ -22,7 +22,7 @@ export class NavBarComponent {
       '_blank'
     );
   }
-  // test() {
-  //   this.router.navigate(['test']);
-  // }
+  test() {
+    this.router.navigate(['test']);
+  }
 }
