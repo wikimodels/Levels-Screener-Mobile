@@ -8,7 +8,7 @@ import {
 } from 'src/consts/url-consts';
 // import { AuthGuard } from './login/guards/auth.guard'; // Uncomment if you have an AuthGuard
 import { TestComponent } from './test/test.component';
-import { FirebaseGuard } from './test/firebase-guard';
+import { AuthGuard } from './login/guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -17,7 +17,7 @@ const routes: Routes = [
       import('./triggered-line-alerts/triggered-line-alerts.module').then(
         (m) => m.TriggeredLineAlertsModule
       ),
-    // canActivate: [AuthGuard], // Uncomment if you want to protect this route
+    canActivate: [AuthGuard], // Uncomment if you want to protect this route
   },
   {
     path: TRIGGERED_VWAP_ALERTS,
@@ -25,7 +25,7 @@ const routes: Routes = [
       import('./triggered-vwap-alerts/triggered-vwap-alerts.module').then(
         (m) => m.TriggeredVwapAlertsModule
       ),
-    // canActivate: [AuthGuard], // Uncomment if you want to protect this route
+    canActivate: [AuthGuard], // Uncomment if you want to protect this route
   },
   {
     path: LOGIN,

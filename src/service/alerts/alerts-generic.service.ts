@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, BehaviorSubject, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
@@ -64,8 +64,11 @@ export class AlertsGenericService {
         this.setAlerts(collectionName, []);
         this.setAlerts(collectionName, alerts);
         console.log('getAllAlerts --> ', collectionName, alerts);
-        const msg = `Ok`;
-        this.snackbarService.showSnackBar(msg, '');
+
+        this.snackbarService.showIcon(
+          2000,
+          'assets/icons/thumb-up-in-circle.svg'
+        );
       }),
       catchError((error) => {
         console.error('Error fetching alerts:', error);
@@ -97,8 +100,10 @@ export class AlertsGenericService {
       .pipe(
         tap((data) => {
           console.log('deleteMany response --> ', data);
-          const msg = `Ok`;
-          this.snackbarService.showSnackBar(msg, '');
+          this.snackbarService.showIcon(
+            2000,
+            'assets/icons/thumb-up-in-circle.svg'
+          );
         }),
         catchError((error) => {
           console.error('Error deleting alerts:', error);

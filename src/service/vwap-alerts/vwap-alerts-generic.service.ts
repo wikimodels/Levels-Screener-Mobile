@@ -69,7 +69,10 @@ export class VwapAlertsGenericService {
         tap((sortedAlerts) => {
           this.setAlerts(collectionName, []);
           this.setAlerts(collectionName, sortedAlerts);
-          this.snackbarService.showThumbUpIcon();
+          this.snackbarService.showIcon(
+            2000,
+            'assets/icons/thumb-up-in-circle.svg'
+          );
           console.log(
             `Brought from server --> CollectionName: ${collectionName}`,
             sortedAlerts
