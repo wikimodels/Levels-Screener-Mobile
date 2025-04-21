@@ -1,11 +1,12 @@
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { AngularFireModule } from '@angular/fire/compat';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule, isDevMode } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { AngularFireModule } from '@angular/fire/compat';
+ 
 import { env } from 'src/environments/environment';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -24,7 +25,11 @@ import { TriggeredVwapAlertsModule } from './triggered-vwap-alerts/triggered-vwa
 import { TestComponent } from './test/test.component';
 import { GoogleButtonModule } from './google-button/google-button.module';
 import { LoginModule } from './login/login.module';
-
+import { TwImagesComponent } from './tw-images/tw-images.component';
+import { ScrollingModule } from '@angular/cdk/scrolling';
+import { NgOptimizedImage } from '@angular/common';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatDialogModule } from '@angular/material/dialog';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,6 +37,7 @@ import { LoginModule } from './login/login.module';
     NavBarComponent,
     HtmlSnackbarComponent,
     TestComponent,
+    TwImagesComponent,
   ],
   imports: [
     FormsModule,
@@ -41,7 +47,12 @@ import { LoginModule } from './login/login.module';
     AppMaterialModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-
+    //-----------------
+    ScrollingModule,
+    NgOptimizedImage,
+    MatProgressSpinnerModule,
+    MatDialogModule,
+    //------------------
     TriggeredLineAlertsModule,
     TriggeredVwapAlertsModule,
     AngularFireModule.initializeApp(env.firebaseConfig),

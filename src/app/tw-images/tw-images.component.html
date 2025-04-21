@@ -1,0 +1,27 @@
+<div class="image-carousel">
+  <div class="navigation-buttons" *ngIf="imageUrls.length > 1">
+    <button (click)="previousImage()" [disabled]="currentIndex === 0">
+      ← Previous
+    </button>
+    <span>{{ currentIndex + 1 }} / {{ imageUrls.length }}</span>
+    <button (click)="nextImage()" [disabled]="currentIndex === imageUrls.length - 1">
+      Next →
+    </button>
+  </div>
+
+  <div class="main-image-container">
+    <img *ngIf="currentImage" [src]="currentImage" alt="TradingView chart" class="chart-image" (load)="onImageLoad()"
+      [class.loaded]="imageLoaded" [attr.data-image-id]="trackImageId(currentIndex)">
+
+    <div class="loading-overlay" *ngIf="!imageLoaded">
+      <mat-spinner diameter="40"></mat-spinner>
+    </div>
+  </div>
+
+  <div class="thumbnail-container" *ngIf="imageUrls.length > 1">
+    <div *ngFor="let url of imageUrls; let i = index" class="thumbnail" [class.active]="i === currentIndex"
+      (click)="currentIndex = i; resetLoadingState()">
+      <img [src]="url" alt="Thumbnail" [class.thumbnail-loaded]="i === currentIndex ? imageLoaded : false">
+    </div>
+  </div>
+</div>

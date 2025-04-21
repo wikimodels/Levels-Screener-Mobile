@@ -31,9 +31,10 @@
     <button mat-icon-button (click)="toggleAll()">
       <span class="counter"> {{counter}}</span>
     </button>
+    <button mat-icon-button (click)="onOpenImagesModalDialog()">
+      Show
+    </button>
   </div>
-
-
 </div>
 <div class="table-container">
   <app-triggered-vwap-alerts-field [alerts]="alerts"></app-triggered-vwap-alerts-field>

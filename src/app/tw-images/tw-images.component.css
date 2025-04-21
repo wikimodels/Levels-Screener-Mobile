@@ -1,0 +1,23 @@
+/* Add these to previous styles */
+.chart-image {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  transform: scale(0.98);
+}
+
+.chart-image.loaded {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.thumbnail img {
+  transition: opacity 0.2s ease;
+  opacity: 0.6;
+}
+
+.thumbnail.active img {
+  opacity: 1;
+}
+
+.thumbnail.thumbnail-loaded img {
+  opacity: 1;
+}

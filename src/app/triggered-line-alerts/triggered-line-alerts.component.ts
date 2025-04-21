@@ -40,11 +40,12 @@ export class TriggeredLineAlertsComponent implements OnInit, OnDestroy {
         .alerts$(AlertsCollection.TriggeredAlerts)
         .subscribe((data: Alert[]) => {
           this.isDeleteDisable = data.length === 0 ? true : false;
-          data.sort((a, b) => {
+          this.alerts = data.sort((a, b) => {
             if (a.activationTime === undefined) return 1; // Place undefined values last
             if (b.activationTime === undefined) return -1; // Place undefined values last
             return Number(b.activationTime) - Number(a.activationTime); // Sort by activationTime in descending order
           });
+          console.log(this.alerts);
           setTimeout(() => {
             this.isRotating = false;
           }, 1000);
