@@ -203,3 +203,30 @@ input[type=number] {
   font-style: italic;
   font-weight: 500;
 }
+.swiper-pagination {
+  bottom: 10px !important;
+}
+
+.swiper-pagination-bullet {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.swiper-pagination-bullet-active {
+  background: white;
+}
+
+/* Limit max zoom manually */
+.swiper-zoom-container {
+  transition: transform 0.3s ease-in-out; /* smooth zooming */
+  transform-origin: center center;        /* make zoom feel natural */
+  max-width: 200%;                        /* prevent scaling beyond a limit */
+  max-height: 200%;
+}
+
+/* Optional: Style the image itself */
+.swiper-zoom-container img {
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+}
+

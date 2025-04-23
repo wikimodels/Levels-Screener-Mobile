@@ -9,6 +9,7 @@ export const ALERTS_AT_WORK = AlertsCollection.WorkingAlerts;
 export const TRIGGERED_LINE_ALERTS = 'triggered-line-alerts';
 export const TRIGGERED_VWAP_ALERTS = 'triggered-vwap-alerts';
 export const LOGIN = 'login';
+export const DESCRIPTION = 'description';
 
 export const VIBRATIONS = {
   routine: 8,

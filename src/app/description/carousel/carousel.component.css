@@ -1,0 +1,125 @@
+/* carousel.component.css */
+.carousel-container {
+  position: relative;
+  width: 100vw;
+  height: calc(100vw * 9 / 21);
+  margin: 2rem auto;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.slides-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1;
+}
+
+.slide.active {
+  opacity: 1;
+  z-index: 2;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.controls {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.controls.visible {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.control {
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin: 0 1rem;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(2px);
+}
+
+.control:hover {
+  background: rgba(0, 0, 0, 0.8);
+  transform: scale(1.1);
+}
+
+.control mat-icon {
+  color: white;
+  font-size: 24px;
+}
+
+.indicators {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  padding: 8px 16px;
+  /* background: rgba(0, 0, 0, 0.7); */
+  background: transparent;
+  border-radius: 6px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  z-index: 3;
+}
+
+.indicators.visible {
+  opacity: 1;
+}
+
+.indicator {
+  width: 30px;
+  height: 6px;
+  background: #2d2b2b66;
+  border-radius: 3px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.indicator.active {
+  width: 35px;
+  background: #040404;
+}
+
+.indicator-progress {
+  display: none;
+}
+/* Remove all focus outlines globally for carousel */
+.carousel-container *:focus {
+  outline: none;
+}

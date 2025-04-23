@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import {
+  DESCRIPTION,
   LOGIN,
   TRIGGERED_LINE_ALERTS,
   TRIGGERED_VWAP_ALERTS,
@@ -24,6 +25,14 @@ const routes: Routes = [
     loadChildren: () =>
       import('./triggered-vwap-alerts/triggered-vwap-alerts.module').then(
         (m) => m.TriggeredVwapAlertsModule
+      ),
+    canActivate: [AuthGuard], // Uncomment if you want to protect this route
+  },
+  {
+    path: DESCRIPTION,
+    loadChildren: () =>
+      import('./description/description.module').then(
+        (m) => m.DescriptionModule
       ),
     canActivate: [AuthGuard], // Uncomment if you want to protect this route
   },

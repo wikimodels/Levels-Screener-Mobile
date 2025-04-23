@@ -8,7 +8,6 @@ import { VwapAlertsGenericService } from 'src/service/vwap-alerts/vwap-alerts-ge
 import { AlertsCollection } from '../models/alerts/alerts-collections';
 import { Coin } from '../models/coin/coin';
 import { VwapAlert } from '../models/vwap/vwap-alert';
-import { TwImagesComponent } from '../tw-images/tw-images.component';
 import { MatDialog } from '@angular/material/dialog';
 
 @Component({
@@ -169,16 +168,6 @@ export class TriggeredVwapAlertsComponent implements OnInit, OnDestroy {
       this.selectionService.selectedValues() as VwapAlert[];
     if (selectedAlerts.length === 0) return [];
     return selectedAlerts[0]?.tvScreensUrls || [];
-  }
-
-  onOpenImagesModalDialog(): void {
-    this.modelDialog.open(TwImagesComponent, {
-      data: this.selectedImages,
-      enterAnimationDuration: 250,
-      exitAnimationDuration: 250,
-      width: '100vw',
-      height: '100vh',
-    });
   }
 
   ngOnDestroy(): void {

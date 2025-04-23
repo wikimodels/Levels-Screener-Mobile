@@ -1,0 +1,25 @@
+<!-- carousel.component.html -->
+<div class="carousel-container" (mouseenter)="controlsVisible = true" (mouseleave)="controlsVisible = false">
+  <div class="slides-container">
+    <div *ngFor="let image of images; let i = index" class="slide" [class.active]="i === currentSlide">
+      <img [src]="image" alt="Chart {{i + 1}}">
+    </div>
+  </div>
+
+  <div class="controls" [class.visible]="controlsVisible">
+    <button class="control prev" (click)="prevSlide()">
+      <mat-icon>chevron_left</mat-icon>
+    </button>
+    <button class="control next" (click)="nextSlide()">
+      <mat-icon>chevron_right</mat-icon>
+    </button>
+  </div>
+
+  <div class="indicators" [class.visible]="controlsVisible">
+    <button *ngFor="let image of images; let i = index" class="indicator" [class.active]="i === currentSlide"
+      (click)="currentSlide = i" [attr.aria-label]="'Go to slide ' + (i + 1)">
+      <span class="indicator-progress"></span>
+    </button>
+  </div>
+
+</div>

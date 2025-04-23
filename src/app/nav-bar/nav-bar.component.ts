@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { VIBRATIONS } from 'src/consts/url-consts';
+import { DESCRIPTION, VIBRATIONS } from 'src/consts/url-consts';
 import { runVibration } from 'src/functions/run-vibration';
-
 import { SelectionService } from 'src/service/selection.service';
 
 @Component({
@@ -22,6 +21,18 @@ export class NavBarComponent {
       '_blank'
     );
   }
+
+  onShowScreens(): void {
+    const alert = this.selectionService.selectedValues()[0] as any;
+    console.log('Alert', alert);
+
+    if (!alert) {
+      console.error('No alert selected. Cannot open modal.');
+      return;
+    }
+    this.router.navigate([DESCRIPTION], { state: { alert } });
+  }
+
   test() {
     this.router.navigate(['test']);
   }

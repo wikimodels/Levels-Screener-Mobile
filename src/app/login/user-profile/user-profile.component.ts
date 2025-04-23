@@ -39,7 +39,6 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   onGoToLogin(): void {
     runVibration(VIBRATIONS.routine);
     this.router.navigate([LOGIN]);
-    window.location.reload();
   }
 
   ngOnDestroy(): void {
