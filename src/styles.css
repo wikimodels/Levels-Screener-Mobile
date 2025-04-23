@@ -230,3 +230,6 @@ input[type=number] {
   transition: transform 0.3s ease;
 }
 
+.swiper-pagination-bullet-active {
+  background: orange !important;
+}

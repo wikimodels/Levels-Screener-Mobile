@@ -19,7 +19,7 @@ import { DescriptionComponent } from './description.component';
 import { CarouselComponent } from './carousel/carousel.component';
 import { DescriptionRoutingModule } from './description-routing.module';
 import { SwiperModule } from 'swiper/angular';
-import { ZoomViewerComponent } from '../zoom-viewer/zoom-viewer.component';
+import { ZoomViewerComponent } from './zoom-viewer/zoom-viewer.component';
 
 @NgModule({
   declarations: [DescriptionComponent, CarouselComponent, ZoomViewerComponent],

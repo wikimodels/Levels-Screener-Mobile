@@ -7,6 +7,8 @@ import { SelectionService } from 'src/service/selection.service';
 import { Alert } from '../models/alerts/alert';
 import { AlertsCollection } from '../models/alerts/alerts-collections';
 import { Coin } from '../models/coin/coin';
+import { DESCRIPTION } from 'src/consts/url-consts';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-triggered-line-alerts',
@@ -27,7 +29,8 @@ export class TriggeredLineAlertsComponent implements OnInit, OnDestroy {
   constructor(
     private alertsService: AlertsGenericService,
     public selectionService: SelectionService<any>,
-    private coinsLinksService: CoinLinksService
+    private coinsLinksService: CoinLinksService,
+    private router: Router
   ) {}
 
   // Lifecycle Hooks
@@ -162,6 +165,17 @@ export class TriggeredLineAlertsComponent implements OnInit, OnDestroy {
         this.selectionService.clear();
         this.refreshDataTable();
       });
+  }
+
+  onShowScreens(): void {
+    const alert = this.selectionService.selectedValues()[0] as any;
+    console.log('Alert', alert);
+
+    if (!alert) {
+      console.error('No alert selected. Cannot open modal.');
+      return;
+    }
+    this.router.navigate([DESCRIPTION], { state: { alert } });
   }
 
   ngOnDestroy(): void {

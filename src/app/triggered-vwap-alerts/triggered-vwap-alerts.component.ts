@@ -9,6 +9,8 @@ import { AlertsCollection } from '../models/alerts/alerts-collections';
 import { Coin } from '../models/coin/coin';
 import { VwapAlert } from '../models/vwap/vwap-alert';
 import { MatDialog } from '@angular/material/dialog';
+import { DESCRIPTION } from 'src/consts/url-consts';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-triggered-vwap-alerts',
@@ -30,7 +32,7 @@ export class TriggeredVwapAlertsComponent implements OnInit, OnDestroy {
     private alertsService: VwapAlertsGenericService,
     public selectionService: SelectionService<any>,
     private coinsLinksService: CoinLinksService,
-    private modelDialog: MatDialog
+    private router: Router
   ) {}
 
   // Lifecycle Hooks
@@ -163,11 +165,15 @@ export class TriggeredVwapAlertsComponent implements OnInit, OnDestroy {
       });
   }
 
-  get selectedImages(): string[] {
-    const selectedAlerts =
-      this.selectionService.selectedValues() as VwapAlert[];
-    if (selectedAlerts.length === 0) return [];
-    return selectedAlerts[0]?.tvScreensUrls || [];
+  onShowScreens(): void {
+    const alert = this.selectionService.selectedValues()[0] as any;
+    console.log('Alert', alert);
+
+    if (!alert) {
+      console.error('No alert selected. Cannot open modal.');
+      return;
+    }
+    this.router.navigate([DESCRIPTION], { state: { alert } });
   }
 
   ngOnDestroy(): void {

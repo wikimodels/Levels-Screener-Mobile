@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 // your.component.ts
 import SwiperCore, { Pagination, Zoom } from 'swiper';
-import { ZoomViewerComponent } from '../zoom-viewer/zoom-viewer.component';
+import { ZoomViewerComponent } from './zoom-viewer/zoom-viewer.component';
 import { MatDialog } from '@angular/material/dialog';
 
 // Register Swiper modules
@@ -17,8 +17,9 @@ export class DescriptionComponent implements OnInit {
   defaultImageUrl = 'assets/img/no-chart-image.jpg';
   isZoomOpen = false;
   selectedIndex = 0;
-  constructor(private dialog: MatDialog) {}
+  constructor() {}
   ngOnInit(): void {
+    window.scrollTo(0, 0);
     this.alert = history.state.alert;
     if (this.alert.tvScreensUrls && this.alert.tvScreensUrls?.length !== 0) {
       this.imageUrls = [...this.alert.tvScreensUrls];

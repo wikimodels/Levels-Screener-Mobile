@@ -22,17 +22,6 @@ export class NavBarComponent {
     );
   }
 
-  onShowScreens(): void {
-    const alert = this.selectionService.selectedValues()[0] as any;
-    console.log('Alert', alert);
-
-    if (!alert) {
-      console.error('No alert selected. Cannot open modal.');
-      return;
-    }
-    this.router.navigate([DESCRIPTION], { state: { alert } });
-  }
-
   test() {
     this.router.navigate(['test']);
   }
