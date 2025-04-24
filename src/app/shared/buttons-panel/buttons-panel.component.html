@@ -1,0 +1,42 @@
+<div class="button-group">
+  <!-- Container for the "Open in TradingView" button -->
+  <ng-container>
+    <button mat-icon-button (click)="onOpenTradingview()">
+      <mat-icon svgIcon="tv-negative"></mat-icon>
+    </button>
+  </ng-container>
+
+  <!-- Refresh Button: Sends a refresh signal and rotates the icon while refreshing -->
+  <ng-container>
+    <button mat-icon-button (click)="buttonsPanelService.sendRefreshSignal()"
+      [disabled]="buttonsPanelService.isRotatingValue">
+      <mat-icon [ngClass]="{ 'rotate': buttonsPanelService.isRotatingValue }">
+        sync
+      </mat-icon>
+    </button>
+  </ng-container>
+
+  <!-- Delete Button: Sends a deletion signal to remove selected items -->
+  <ng-container>
+    <button mat-icon-button (click)="buttonsPanelService.sendDeletionSignal()">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </ng-container>
+
+  <!-- Sort Button: Toggles sorting direction (ascending/descending) -->
+  <ng-container>
+    <button mat-icon-button (click)="buttonsPanelService.sendSortDirectionSignal()">
+      <mat-icon [svgIcon]="buttonsPanelService.isAscendingValue ? 'sort-down' : 'sort-up'"></mat-icon>
+    </button>
+  </ng-container>
+
+  <!-- Select All Button: Toggles selection of all items and displays a counter -->
+  <button mat-icon-button (click)="buttonsPanelService.sendToggleSelectionSignal()">
+    <span class="counter">{{counter}}</span>
+  </button>
+
+  <!-- Show TV Screens Button: Opens a modal or performs an action related to TV screens -->
+  <button mat-icon-button (click)="onShowScreens()">
+    <mat-icon svgIcon="mobile-loupe"></mat-icon>
+  </button>
+</div>

@@ -167,7 +167,7 @@ input[type=number] {
 
 }
 
-.card-container .logo img {
+.logo img {
   width: 24px;  /* ✅ Smaller coin image */
   height: 24px;
   object-fit: contain;
@@ -195,14 +195,9 @@ input[type=number] {
   background-color: #e8ebee;
 }
 
-.activation-time{
-  font-weight: 700 !important;
-}
 
-.alert-action{
-  font-style: italic;
-  font-weight: 500;
-}
+
+
 .swiper-pagination {
   bottom: 10px !important;
 }
@@ -233,3 +228,43 @@ input[type=number] {
 .swiper-pagination-bullet-active {
   background: orange !important;
 }
+
+/* ALERT STYLES start */
+.alert-name{
+  font-weight: 500;
+  font-style: oblique ;
+}
+
+.alert-action{
+  font-weight: 500 !important;
+}
+
+.activation-time{
+  font-weight: 700 !important;
+  font-style: italic !important;
+}
+
+.logo-container {
+  display: flex;
+  flex-direction: row;
+  gap: 0.25rem; /* 4px converted to rem */
+}
+
+.icon-text {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.25rem; /* 4px converted to rem */
+}
+
+.icon-anchor,
+.icon-alarm {
+  width: 1.25rem; /* 20px converted to rem */
+  height: 1.25rem; /* 20px converted to rem */
+  margin-bottom: 0.25rem; /* 4px converted to rem */
+}
+
+.activation-time {
+  margin-top: 0;
+}
+/* ALERT STYLES end */

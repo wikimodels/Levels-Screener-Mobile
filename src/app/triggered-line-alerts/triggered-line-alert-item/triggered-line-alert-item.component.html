@@ -1,6 +1,6 @@
 <div matRipple class="card-container mat-elevation-z4" (click)="toggleItem(item)" [class.selected]="isSelected(item)">
   <!-- LOGO -->
-  <div style="display:flex; flex-direction: row; gap:4px">
+  <div class="logo-container">
     <div class="logo">
       <img [src]="item.imageUrl ? item.imageUrl : 'assets/img/noname.png'" alt="logo" />
     </div>
@@ -8,8 +8,13 @@
     <!-- SYMBOL -->
     <div class="symbol-name">{{ item.symbol }} ({{item.category}})</div>
   </div>
-  <!-- SYMBOL -->
-  <div>Alert Name: {{ item.alertName }}</div>
-  <div class="alert-action">Action: {{ item.action }} </div>
-  <div class="activation-time">Activation Time: {{item.activationTimeStr}}</div>
+
+  <!-- DETAILS -->
+  <div class="alert-name"> {{ item.alertName }}</div>
+  <div class="alert-action">{{ item.action }} </div>
+  <div class="activation-time">
+    <span class="icon-text">
+      <mat-icon class="icon-alarm" svgIcon="alarm"></mat-icon>{{item.activationTimeStr}}
+    </span>
+  </div>
 </div>

@@ -9,6 +9,7 @@ import { TriggeredVwapAlertItemComponent } from './triggered-vwap-alert-item/tri
 import { TriggeredVwapAlertsFieldComponent } from './triggered-vwap-alerts-field/triggered-vwap-alerts-field.component';
 import { TriggeredVwapAlertsComponent } from './triggered-vwap-alerts.component';
 import { TriggeredVwapAlertsRoutingModule } from './triggered-vwap-alerts-routing.module';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { TriggeredVwapAlertsRoutingModule } from './triggered-vwap-alerts-routin
     MatButtonModule,
     MatIconModule,
     MatRippleModule,
+    SharedModule,
     TriggeredVwapAlertsRoutingModule,
   ],
   exports: [TriggeredVwapAlertsComponent],

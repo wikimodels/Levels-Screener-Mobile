@@ -1,14 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 
-import { Subscription, takeUntil } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { AlertsGenericService } from 'src/service/alerts/alerts-generic.service';
-import { CoinLinksService } from 'src/service/coin-links.service';
 import { SelectionService } from 'src/service/selection.service';
 import { Alert } from '../models/alerts/alert';
 import { AlertsCollection } from '../models/alerts/alerts-collections';
-import { Coin } from '../models/coin/coin';
-import { DESCRIPTION } from 'src/consts/url-consts';
-import { Router } from '@angular/router';
+import { ButtonsPanelService } from '../shared/services/buttons-panel.service';
 
 @Component({
   selector: 'app-triggered-line-alerts',
@@ -16,12 +13,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./triggered-line-alerts.component.css'],
 })
 export class TriggeredLineAlertsComponent implements OnInit, OnDestroy {
-  counter = 0;
-  isRotating = false;
-  isDeleteDisable = false;
   alerts: Alert[] = [];
   isAscending = false;
-  private openedWindows: Window[] = [];
+
   private subscription = new Subscription();
   defaultLink = 'https://www.tradingview.com/chart?symbol=BINANCE:BTCUSDT.P';
 
@@ -29,69 +23,65 @@ export class TriggeredLineAlertsComponent implements OnInit, OnDestroy {
   constructor(
     private alertsService: AlertsGenericService,
     public selectionService: SelectionService<any>,
-    private coinsLinksService: CoinLinksService,
-    private router: Router
+    private buttonsPanelService: ButtonsPanelService
   ) {}
 
   // Lifecycle Hooks
   ngOnInit(): void {
-    this.isRotating = true;
     window.scrollTo(0, 0);
     this.refreshDataTable();
     this.subscription.add(
       this.alertsService
         .alerts$(AlertsCollection.TriggeredAlerts)
         .subscribe((data: Alert[]) => {
-          this.isDeleteDisable = data.length === 0 ? true : false;
           this.alerts = data.sort((a, b) => {
             if (a.activationTime === undefined) return 1; // Place undefined values last
             if (b.activationTime === undefined) return -1; // Place undefined values last
             return Number(b.activationTime) - Number(a.activationTime); // Sort by activationTime in descending order
           });
           console.log(this.alerts);
-          setTimeout(() => {
-            this.isRotating = false;
-          }, 1000);
         })
     );
 
     this.subscription.add(
-      this.selectionService.selectionCounter$.subscribe((count) => {
-        this.counter = count;
+      this.buttonsPanelService.toggleSelectionSignal$.subscribe(() => {
+        this.toggleAll();
+      })
+    );
+
+    this.subscription.add(
+      this.buttonsPanelService.toggleDeletionSubject$.subscribe(() => {
+        this.onDeleteSelected();
+      })
+    );
+
+    this.subscription.add(
+      this.buttonsPanelService.toggleRefreshSubject$.subscribe(() => {
+        this.refreshDataTable();
+      })
+    );
+
+    this.subscription.add(
+      this.buttonsPanelService.toggleSortDirectionSubject$.subscribe(() => {
+        this.sortAlerts();
       })
     );
   }
 
   refreshDataTable() {
-    this.isRotating = true;
-    this.subscription.add(
-      this.alertsService
-        .getAllAlerts(AlertsCollection.TriggeredAlerts)
-        .subscribe((data: Alert[]) => {
-          console.log('Triggered Alerts data', data);
-          this.alerts = data;
-          this.selectionService.clear();
-          setTimeout(() => {
-            this.isRotating = false;
-          }, 1000);
-        })
-    );
-    this.isRotating = true;
-    setTimeout(() => {
-      this.isRotating = false;
-    }, 1000);
+    this.alertsService
+      .getAllAlerts(AlertsCollection.TriggeredAlerts)
+      .subscribe((data: Alert[]) => {
+        console.log('Triggered Alerts data', data);
+        this.alerts = data;
+        this.selectionService.clear();
+      });
   }
 
   toggleAll(): void {
     this.selectionService.isAllSelected(this.alerts)
       ? this.selectionService.clear()
       : this.selectionService.select(this.alerts);
-  }
-
-  rotateIcon() {
-    this.isRotating = true;
-    this.refreshDataTable();
-    setTimeout(() => (this.isRotating = false), 1000); // Match animation duration
   }
 
   isAllSelected(): boolean {
@@ -114,31 +104,6 @@ export class TriggeredLineAlertsComponent implements OnInit, OnDestroy {
       'After sorting:',
       this.alerts.map((alert) => alert.activationTime)
     );
-  }
-
-  onOpenTradingview(): void {
-    this.openWindowsFromSelection();
-  }
-
-  onOpenSingleTradingview(): void {
-    const newWindow = window.open(this.defaultLink, '_blank');
-    if (newWindow) this.openedWindows.push(newWindow);
-  }
-
-  private openWindowsFromSelection(): void {
-    this.selectionService
-      .selectedValues()
-      .slice(0, 1)
-      .forEach((v: Coin, index: number) => {
-        setTimeout(() => {
-          const newWindow = window.open(
-            this.coinsLinksService.tradingViewLink(v.symbol, v.exchanges),
-            '_blank'
-          );
-          if (newWindow) this.openedWindows.push(newWindow);
-        }, index * 1500);
-      });
-    this.selectionService.clear();
   }
 
   // Sorting logic with direction parameter
@@ -165,17 +130,6 @@ export class TriggeredLineAlertsComponent implements OnInit, OnDestroy {
         this.selectionService.clear();
         this.refreshDataTable();
       });
-  }
-
-  onShowScreens(): void {
-    const alert = this.selectionService.selectedValues()[0] as any;
-    console.log('Alert', alert);
-
-    if (!alert) {
-      console.error('No alert selected. Cannot open modal.');
-      return;
-    }
-    this.router.navigate([DESCRIPTION], { state: { alert } });
   }
 
   ngOnDestroy(): void {

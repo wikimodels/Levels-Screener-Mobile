@@ -9,6 +9,7 @@ import { TriggeredLineAlertsComponent } from './triggered-line-alerts.component'
 import { TriggeredLineAlertItemComponent } from './triggered-line-alert-item/triggered-line-alert-item.component';
 import { TriggeredLineAlertsFieldComponent } from './triggered-line-alerts-field/triggered-line-alerts-field.component';
 import { MatRippleModule } from '@angular/material/core';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { MatRippleModule } from '@angular/material/core';
     MatIconModule,
     MatRippleModule,
     TriggeredLineAlertsRoutingModule,
+    SharedModule,
   ],
   exports: [TriggeredLineAlertsComponent],
 })

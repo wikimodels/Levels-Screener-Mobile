@@ -109,7 +109,6 @@ export class VwapAlertsGenericService {
       .pipe(
         tap((response) => {
           console.log('deleteMany response --> ', response);
-          this.snackbarService.showSnackBar('Ok');
         }),
         catchError((error) => {
           this.handleError(error);
