@@ -8,8 +8,7 @@
 
   <!-- Refresh Button: Sends a refresh signal and rotates the icon while refreshing -->
   <ng-container>
-    <button mat-icon-button (click)="buttonsPanelService.sendRefreshSignal()"
-      [disabled]="buttonsPanelService.isRotatingValue">
+    <button mat-icon-button (click)="onSendRefreshSignal()" [disabled]="buttonsPanelService.isRotatingValue">
       <mat-icon [ngClass]="{ 'rotate': buttonsPanelService.isRotatingValue }">
         sync
       </mat-icon>
@@ -18,20 +17,20 @@
 
   <!-- Delete Button: Sends a deletion signal to remove selected items -->
   <ng-container>
-    <button mat-icon-button (click)="buttonsPanelService.sendDeletionSignal()">
+    <button mat-icon-button (click)="onSendDeletionSignal()">
       <mat-icon>delete</mat-icon>
     </button>
   </ng-container>
 
   <!-- Sort Button: Toggles sorting direction (ascending/descending) -->
   <ng-container>
-    <button mat-icon-button (click)="buttonsPanelService.sendSortDirectionSignal()">
+    <button mat-icon-button (click)="onSortDirectionSignal()">
       <mat-icon [svgIcon]="buttonsPanelService.isAscendingValue ? 'sort-down' : 'sort-up'"></mat-icon>
     </button>
   </ng-container>
 
   <!-- Select All Button: Toggles selection of all items and displays a counter -->
-  <button mat-icon-button (click)="buttonsPanelService.sendToggleSelectionSignal()">
+  <button mat-icon-button (click)="onSendToggleSelectionSignal()">
     <span class="counter">{{counter}}</span>
   </button>
 

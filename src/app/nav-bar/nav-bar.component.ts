@@ -14,6 +14,7 @@ export class NavBarComponent {
     public selectionService: SelectionService<any>,
     private router: Router
   ) {}
+
   onGoToBitcoin() {
     runVibration(VIBRATIONS.routine);
     window.open(

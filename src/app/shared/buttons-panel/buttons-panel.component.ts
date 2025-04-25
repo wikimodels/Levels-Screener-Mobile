@@ -2,10 +2,11 @@ import { Component, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Coin } from 'src/app/models/coin/coin';
-import { DESCRIPTION } from 'src/consts/url-consts';
+import { DESCRIPTION, VIBRATIONS } from 'src/consts/url-consts';
 import { CoinLinksService } from 'src/service/coin-links.service';
 import { SelectionService } from 'src/service/selection.service';
 import { ButtonsPanelService } from '../services/buttons-panel.service';
+import { runVibration } from 'src/functions/run-vibration';
 
 @Component({
   selector: 'app-buttons-panel',
@@ -36,10 +37,12 @@ export class ButtonsPanelComponent implements OnDestroy {
 
   onOpenTradingview(): void {
     console.log('Open Tradingview', this.selectionService.selectedValues());
+    runVibration(VIBRATIONS.routine);
     this.openWindowsFromSelection();
   }
 
   onShowScreens(): void {
+    runVibration(VIBRATIONS.routine);
     const alert = this.selectionService.selectedValues()[0] as any;
     console.log('Alert', alert);
 
@@ -64,6 +67,26 @@ export class ButtonsPanelComponent implements OnDestroy {
         }, index * 1500);
       });
     this.selectionService.clear();
+  }
+
+  onSendRefreshSignal() {
+    runVibration(VIBRATIONS.routine);
+    this.buttonsPanelService.sendRefreshSignal();
+  }
+
+  onSendDeletionSignal() {
+    runVibration(VIBRATIONS.routine);
+    this.buttonsPanelService.sendDeletionSignal();
+  }
+
+  onSortDirectionSignal() {
+    runVibration(VIBRATIONS.routine);
+    this.buttonsPanelService.sendSortDirectionSignal();
+  }
+
+  onSendToggleSelectionSignal() {
+    runVibration(VIBRATIONS.routine);
+    this.buttonsPanelService.sendToggleSelectionSignal();
   }
 
   ngOnDestroy(): void {
