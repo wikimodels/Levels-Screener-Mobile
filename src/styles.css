@@ -197,20 +197,11 @@ input[type=number] {
 
 
 
-
+/* --------- SWIPER -------------*/
 .swiper-pagination {
   bottom: 10px !important;
 }
 
-.swiper-pagination-bullet {
-  background: rgba(255, 255, 255, 0.5);
-}
-
-.swiper-pagination-bullet-active {
-  background: white;
-}
-
-/* Limit max zoom manually */
 .swiper-zoom-container {
   transition: transform 0.3s ease-in-out; /* smooth zooming */
   transform-origin: center center;        /* make zoom feel natural */
@@ -225,8 +216,14 @@ input[type=number] {
   transition: transform 0.3s ease;
 }
 
-.swiper-pagination-bullet-active {
-  background: orange !important;
+@import 'swiper/css';
+@import 'swiper/css/pagination';
+
+/* then override: */
+:root {
+  --swiper-pagination-bullet-inactive-color: rgb(195, 199, 195);   /* non-active bullets */
+  --swiper-pagination-color: orange;                  /* active bullet */
+  --swiper-pagination-bullet-inactive-opacity: 1;     /* fully opaque */
 }
 
 /* ALERT STYLES start */
@@ -268,3 +265,4 @@ input[type=number] {
   margin-top: 0;
 }
 /* ALERT STYLES end */
+
