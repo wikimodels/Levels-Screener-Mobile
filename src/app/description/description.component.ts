@@ -24,12 +24,7 @@ export class DescriptionComponent implements OnInit {
     if (this.alert.tvScreensUrls && this.alert.tvScreensUrls?.length !== 0) {
       this.imageUrls = [...this.alert.tvScreensUrls];
     } else {
-      this.alert.tvScreensUrls = [
-        'https://www.tradingview.com/x/dWJGiZwM/',
-        'https://www.tradingview.com/x/sLKyXDHE/',
-        'https://www.tradingview.com/x/SUO615ZQ/',
-        'https://www.tradingview.com/x/3g3uGkUo/',
-      ]; //push(this.defaultImageUrl);
+      this.alert.tvScreensUrls = ['assets/img/no-chart-image.jpg'];
     }
   }
 
